@@ -1,0 +1,16 @@
+name: obj-remove-env
+channels:
+  - conda-forge
+  - pytorch
+  - defaults
+dependencies:
+  - pytorch=0.4.1
+  - cuda90
+  - opencv
+  - pillow
+  - cython
+  - matplotlib
+  - tqdm
+  - scipy
+  - fastapi
+  - uvicorn
