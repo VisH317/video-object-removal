@@ -71,7 +71,7 @@ def inpaint(args):
     pre = 15
 
     with torch.no_grad():
-        for seq, (inputs, masks, info) in enumerate(DTloader):
+        for seq, (inputs, masks) in enumerate(DTloader):
 
             idx = torch.LongTensor([i for i in range(pre - 1, -1, -1)])
             pre_inputs = inputs[:, :, :pre].index_select(2, idx)
@@ -81,7 +81,7 @@ def inpaint(args):
 
             bs = inputs.size(0)
             num_frames = inputs.size(2)
-            seq_name = info['name'][0]
+            seq_name = args.name
 
             save_path = os.path.join(opt.result_path, seq_name)
             if not os.path.exists(save_path) and opt.save_image:

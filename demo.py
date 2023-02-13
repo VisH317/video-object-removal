@@ -10,6 +10,7 @@ parser.add_argument('--resume', default='cp/SiamMask_DAVIS.pth', type=str,
 parser.add_argument('--data', default='data/Human6', help='videos or image files')
 parser.add_argument('--mask-dilation', default=32, type=int, help='mask dilation when inpainting')
 args = parser.parse_args()
+print(args)
 
 mask(args)
 inpaint(args)

@@ -100,4 +100,4 @@ class DAVIS(data.Dataset):
         masks = (masks == 1).type(torch.FloatTensor).unsqueeze(0)
         images = torch.stack(images).permute(3,0,1,2)
 
-        return images, masks, info
+        return images, masks

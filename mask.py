@@ -4,12 +4,12 @@
 # Written by Qiang Wang (wangqiang2015 at ia.ac.cn)
 # --------------------------------------------------------
 import os
-import glob
+import av
 from get_mask.test import *
 from get_mask.models.custom import Custom
 
 
-def get_frames(video_name):
+def get_frames_old(video_name):
     if not video_name:
         cap = cv2.VideoCapture(0)
         # warmup
@@ -38,6 +38,11 @@ def get_frames(video_name):
             frame = cv2.imread(img)
             yield frame
 
+def get_frames(video_file):
+    f = av.open(video_file)
+    for frame in f.decode(video=0):
+        yield frame.to_array()
+
 
 def mask(args):
     # Setup device
@@ -63,8 +68,11 @@ def mask(args):
     cv2.namedWindow("Get_mask", cv2.WND_PROP_FULLSCREEN)
     # cv2.setWindowProperty("SiamMask", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     try:
-        init_rect = cv2.selectROI('Get_mask', ims[0], False, False)
-        x, y, w, h = init_rect
+        #init_rect = cv2.selectROI('Get_mask', ims[0], False, False)
+        x = args.x
+        y = args.y
+        w = args.w
+        h = args.h
     except:
         exit()
 
