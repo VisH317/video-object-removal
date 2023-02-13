@@ -1,0 +1,14 @@
+build:
+  python_version: "3.8"
+  python_packages: 
+    - "torch=0.4.1"
+    - "cuda90"
+    - "opencv"
+    - "pillow"
+    - "cython"
+    - "matplotlib"
+    - "tqdm"
+    - "scipy"
+    - "fastapi"
+    - "uvicorn"
+predict: "cogpredictor.py:Predictor"
